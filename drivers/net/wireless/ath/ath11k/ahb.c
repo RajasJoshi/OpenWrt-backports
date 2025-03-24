@@ -1000,16 +1000,16 @@ static int ath11k_ahb_fw_resources_init(struct ath11k_base *ab)
 	if (!ab->hw_params.fixed_fw_mem)
 		return 0;
 
-	ret = ath11k_ahb_setup_msa_resources(ab);
-	if (ret) {
-		ath11k_err(ab, "failed to setup msa resources\n");
-		return ret;
-	}
-
 	node = of_get_child_by_name(host_dev->of_node, "wifi-firmware");
 	if (!node) {
 		ab_ahb->fw.use_tz = true;
 		return 0;
+	}
+
+	ret = ath11k_ahb_setup_msa_resources(ab);
+	if (ret) {
+		ath11k_err(ab, "failed to setup msa resources\n");
+		return ret;
 	}
 
 	info.fwnode = &node->fwnode;
@@ -1292,6 +1292,13 @@ static void ath11k_ahb_remove(struct platform_device *pdev)
 qmi_fail:
 	ath11k_ahb_free_resources(ab);
 }
+#if LINUX_VERSION_IS_LESS(6,11,0)
+static int bp_ath11k_ahb_remove(struct spi_device *spi) {
+	ath11k_ahb_remove(spi);
+
+	return 0;
+}
+#endif
 
 static void ath11k_ahb_shutdown(struct platform_device *pdev)
 {
@@ -1313,12 +1320,17 @@ free_resources:
 }
 
 static struct platform_driver ath11k_ahb_driver = {
-	.driver         = {
-		.name   = "ath11k",
+	.driver = {
+		.name = "ath11k",
 		.of_match_table = ath11k_ahb_of_match,
 	},
-	.probe  = ath11k_ahb_probe,
-	.remove_new = ath11k_ahb_remove,
+	.probe = ath11k_ahb_probe,
+#if LINUX_VERSION_IS_GEQ(6,11,0)
+	.remove = ath11k_ahb_remove,
+#else
+	.remove = bp_ath11k_ahb_remove,
+#endif
+	
 	.shutdown = ath11k_ahb_shutdown,
 };
 
