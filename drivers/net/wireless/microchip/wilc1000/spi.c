@@ -291,7 +291,7 @@ static void wilc_bus_remove(struct spi_device *spi)
 	kfree(spi_priv);
 }
 #if LINUX_VERSION_IS_LESS(5,18,0)
-static int bp_wilc_bus_remove(struct spi_device *spi) {
+static int bp_wilc_bus_remove(struct spi_device *spi){
 	wilc_bus_remove(spi);
 
 	return 0;

@@ -551,7 +551,7 @@ static void wl1271_remove(struct spi_device *spi)
 	platform_device_unregister(glue->core);
 }
 #if LINUX_VERSION_IS_LESS(5,18,0)
-static int bp_wl1271_remove(struct spi_device *spi) {
+static int bp_wl1271_remove(struct spi_device *spi){
 	wl1271_remove(spi);
 
 	return 0;

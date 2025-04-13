@@ -446,7 +446,7 @@ static void cw1200_spi_disconnect(struct spi_device *func)
 	}
 }
 #if LINUX_VERSION_IS_LESS(5,18,0)
-static int bp_cw1200_spi_disconnect(struct spi_device *spi) {
+static int bp_cw1200_spi_disconnect(struct spi_device *spi){
 	cw1200_spi_disconnect(spi);
 
 	return 0;

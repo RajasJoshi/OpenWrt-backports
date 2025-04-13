@@ -217,7 +217,7 @@ static void ath_ahb_remove(struct platform_device *pdev)
 	ieee80211_free_hw(hw);
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_ath_ahb_remove(struct spi_device *spi) {
+static int bp_ath_ahb_remove(struct spi_device *spi){
 	ath_ahb_remove(spi);
 
 	return 0;

@@ -593,7 +593,7 @@ static void brcmf_common_pd_remove(struct platform_device *pdev)
 		brcmfmac_pdata->power_off();
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_brcmf_common_pd_remove(struct spi_device *spi) {
+static int bp_brcmf_common_pd_remove(struct spi_device *spi){
 	brcmf_common_pd_remove(spi);
 
 	return 0;
