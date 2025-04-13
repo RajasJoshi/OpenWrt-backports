@@ -721,6 +721,9 @@ config BACKPORTED_IWLDVM
 config BACKPORTED_IWLMVM
 	tristate
 	default IWLMVM
+config BACKPORTED_IWLMLD
+	tristate
+	default IWLMLD
 config BACKPORTED_IWLWIFI_OPMODE_MODULAR
 	tristate
 	default IWLWIFI_OPMODE_MODULAR
@@ -1138,6 +1141,9 @@ config BACKPORTED_RTW88_8821A
 config BACKPORTED_RTW88_8812A
 	tristate
 	default RTW88_8812A
+config BACKPORTED_RTW88_8814A
+	tristate
+	default RTW88_8814A
 config BACKPORTED_RTW88_8822BE
 	tristate
 	default RTW88_8822BE
@@ -1183,6 +1189,12 @@ config BACKPORTED_RTW88_8821AU
 config BACKPORTED_RTW88_8812AU
 	tristate
 	default RTW88_8812AU
+config BACKPORTED_RTW88_8814AE
+	tristate
+	default RTW88_8814AE
+config BACKPORTED_RTW88_8814AU
+	tristate
+	default RTW88_8814AU
 config BACKPORTED_RTW88_DEBUG
 	tristate
 	default RTW88_DEBUG

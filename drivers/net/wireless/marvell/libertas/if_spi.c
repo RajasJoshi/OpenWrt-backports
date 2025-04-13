@@ -1216,7 +1216,7 @@ static void libertas_spi_remove(struct spi_device *spi)
 	free_if_spi_card(card);
 }
 #if LINUX_VERSION_IS_LESS(5,18,0)
-static int bp_libertas_spi_remove(struct spi_device *spi) {
+static int bp_libertas_spi_remove(struct spi_device *spi){
 	libertas_spi_remove(spi);
 
 	return 0;

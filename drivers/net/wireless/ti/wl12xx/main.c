@@ -1931,7 +1931,7 @@ static void wl12xx_remove(struct platform_device *pdev)
 	wlcore_remove(pdev);
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_wl12xx_remove(struct spi_device *spi) {
+static int bp_wl12xx_remove(struct spi_device *spi){
 	wl12xx_remove(spi);
 
 	return 0;

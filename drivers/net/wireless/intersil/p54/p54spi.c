@@ -686,7 +686,7 @@ static void p54spi_remove(struct spi_device *spi)
 	p54_free_common(priv->hw);
 }
 #if LINUX_VERSION_IS_LESS(5,18,0)
-static int bp_p54spi_remove(struct spi_device *spi) {
+static int bp_p54spi_remove(struct spi_device *spi){
 	p54spi_remove(spi);
 
 	return 0;

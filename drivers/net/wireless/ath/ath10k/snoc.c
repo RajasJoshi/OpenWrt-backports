@@ -911,7 +911,7 @@ static void ath10k_snoc_buffer_cleanup(struct ath10k *ar)
 	struct ath10k_snoc_pipe *pipe_info;
 	int pipe_num;
 
-	del_timer_sync(&ar_snoc->rx_post_retry);
+	timer_delete_sync(&ar_snoc->rx_post_retry);
 	for (pipe_num = 0; pipe_num < CE_COUNT; pipe_num++) {
 		pipe_info = &ar_snoc->pipe_info[pipe_num];
 		ath10k_snoc_rx_pipe_cleanup(pipe_info);
@@ -1876,7 +1876,7 @@ static void ath10k_snoc_remove(struct platform_device *pdev)
 	ath10k_snoc_free_resources(ar);
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_ath10k_snoc_remove(struct spi_device *spi) {
+static int bp_ath10k_snoc_remove(struct spi_device *spi){
 	ath10k_snoc_remove(spi);
 
 	return 0;

@@ -836,7 +836,7 @@ static void ath10k_ahb_remove(struct platform_device *pdev)
 	ath10k_core_destroy(ar);
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_ath10k_ahb_remove(struct spi_device *spi) {
+static int bp_ath10k_ahb_remove(struct spi_device *spi){
 	ath10k_ahb_remove(spi);
 
 	return 0;

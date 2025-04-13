@@ -52,7 +52,7 @@ static void mt7622_wmac_remove(struct platform_device *pdev)
 	mt7615_unregister_device(dev);
 }
 #if LINUX_VERSION_IS_LESS(6,11,0)
-static int bp_mt7622_wmac_remove(struct spi_device *spi) {
+static int bp_mt7622_wmac_remove(struct spi_device *spi){
 	mt7622_wmac_remove(spi);
 
 	return 0;
